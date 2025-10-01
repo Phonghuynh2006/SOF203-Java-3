@@ -1,26 +1,28 @@
 package poly.com.controller;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import poly.com.country.Country;
-@WebServlet ("/lab3bai1")
-public class bai1controller extends HttpServlet {
+@WebServlet("/lab3bai4")
+
+public class bai4controller extends HttpServlet{
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		List<Country> list = List.of( 
-				 new Country("VN", "Việt Nam"), 
-				 new Country("US", "United States"), 
-				 new Country("CN", "China") 
-				); 
-				req.setAttribute("countries", list); 
-	    req.getRequestDispatcher("lab3bai1.jsp").forward(req, resp);
-	     
+		Map<String, Object> map = new HashMap<>(); 
+		map.put("title", "Tiêu đề bản tin"); 
+		map.put("content", "Nội dung bản tin thường rất dài"); 
+		req.setAttribute("item", map); 
+		
+		req.getRequestDispatcher("lab3bai4.jsp").forward(req, resp);
+		
 	}
+
 }

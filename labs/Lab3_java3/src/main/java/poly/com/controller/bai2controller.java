@@ -9,8 +9,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import poly.com.country.Country;
-@WebServlet ("/lab3bai1")
-public class bai1controller extends HttpServlet {
+@WebServlet("/lab3bai2")
+public class bai2controller extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -19,8 +19,12 @@ public class bai1controller extends HttpServlet {
 				 new Country("US", "United States"), 
 				 new Country("CN", "China") 
 				); 
-				req.setAttribute("countries", list); 
-	    req.getRequestDispatcher("lab3bai1.jsp").forward(req, resp);
+				req.setAttribute("countries", list);
+		
+		 req.getRequestDispatcher("lab3bai2.jsp").forward(req, resp);
+		 
 	     
+
 	}
+	
 }

@@ -8,11 +8,10 @@
 <body>
 <h2>Lab3</h2>
 <h2>
-<a href="bai1ShareServlet">Bai 1</a> |
-<a href="/bai2UserServlet">Bai 2</a> |
-<a href="/bai2update">Bai 2</a> |
-<a href="/form/update">Bai 3</a> |
-<a href="/bai4JavaBean">Bai 4</a>
+<a href="lab3bai1">Bài1</a>||
+<a href="lab3bai2">Bài2</a>||
+<a href="lab3bai3">Bài3</a>||
+<a href="lab3bai4">Bài4</a>||
 </h2>
 </body>
 </html>
