@@ -4,7 +4,6 @@ Repo này chứa toàn bộ các **bài lab (Lab1..Lab8)** môn SOF203 - Java 3.
 Các project được lưu trong thư mục `labs/`.
 
 ---
-
 ## 📌 Cấu trúc repo
 SOF203-Java-3/
 │
