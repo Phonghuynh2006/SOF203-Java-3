@@ -18,8 +18,6 @@ SOF203-Java-3/
 ├── .gitignore
 └── README.md # File hướng dẫn
 
-yaml
-Sao chép mã
 
 ---
 
@@ -38,7 +36,7 @@ Eclipse → File → Import → Existing Projects into Workspace.
 Chọn thư mục:
 
 bash
-Sao chép mã
+
 SOF203-Java-3/labs
 Tick tất cả project → Finish.
 
@@ -48,7 +46,6 @@ Eclipse → File → Switch Workspace → Other….
 
 Chọn thư mục repo:
 
-Sao chép mã
 SOF203-Java-3
 Restart Eclipse → File → Import → Existing Projects into Workspace → chọn labs/.
 
@@ -56,29 +53,29 @@ Restart Eclipse → File → Import → Existing Projects into Workspace → ch�
 Sau khi code xong trong Eclipse, mở Git Bash trong repo:
 
 bash
-Sao chép mã
+
 cd SOF203-Java-3
 git status
 Stage thay đổi:
 
 bash
-Sao chép mã
+
 git add .
 Commit với message mô tả:
 
 bash
-Sao chép mã
+
 git commit -m "Hoàn thành Lab3 - thêm chức năng đăng nhập"
 Push lên GitHub:
 
 bash
-Sao chép mã
+
 git push origin main
 🔄 Làm việc trên nhiều máy
 Trên máy khác, chỉ cần clone:
 
 bash
-Sao chép mã
+
 git clone https://github.com/Phonghuynh2006/SOF203-Java-3.git
 Import vào Eclipse như hướng dẫn trên.
 
