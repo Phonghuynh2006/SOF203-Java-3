@@ -93,8 +93,6 @@ Chỉ commit source code, config project và resource cần thiết để chạy
 ✍️ Người thực hiện: Phong Huỳnh
 📅 Năm học: 2025
 
-yaml
-Sao chép mã
 
 ---
 
