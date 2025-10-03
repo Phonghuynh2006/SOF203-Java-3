@@ -23,7 +23,7 @@ SOF203-Java-3/
 ## 🚀 Cách sử dụng
 
 ### 1. Clone repo về máy
-```bash
+
 git clone https://github.com/Phonghuynh2006/SOF203-Java-3.git
 2. Import vào Eclipse
 Có 2 cách:
