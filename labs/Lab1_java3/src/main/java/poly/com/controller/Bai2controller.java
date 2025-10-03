@@ -7,7 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-@WebServlet("/bai2")
+@WebServlet("/bai2_lab1")
 public class Bai2controller extends HttpServlet
 {
 @Override

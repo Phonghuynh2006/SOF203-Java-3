@@ -9,7 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-@WebServlet("/lab3bai4")
+@WebServlet("/bai4_lab3")
 
 public class bai4controller extends HttpServlet{
 
@@ -21,7 +21,7 @@ public class bai4controller extends HttpServlet{
 		map.put("content", "Nội dung bản tin thường rất dài"); 
 		req.setAttribute("item", map); 
 		
-		req.getRequestDispatcher("lab3bai4.jsp").forward(req, resp);
+		req.getRequestDispatcher("bai4.jsp").forward(req, resp);
 		
 	}
 

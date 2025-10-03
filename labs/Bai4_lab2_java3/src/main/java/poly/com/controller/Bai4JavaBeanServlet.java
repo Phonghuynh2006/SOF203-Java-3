@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/Bai4JavaBeanServlet")
+@WebServlet("/bai4_lab2")
 public class Bai4JavaBeanServlet extends HttpServlet {
 
 	    @Override

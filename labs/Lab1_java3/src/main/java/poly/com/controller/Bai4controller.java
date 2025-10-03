@@ -7,7 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-@WebServlet({"/bai4","/crud/them","/crud/sua","/crud/xoa"})
+@WebServlet({"/bai4_lab1","/crud/them","/crud/sua","/crud/xoa"})
 public class Bai4controller extends HttpServlet
 {
 @Override

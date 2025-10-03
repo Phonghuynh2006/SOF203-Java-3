@@ -13,7 +13,7 @@
     <p>Quốc gia: ${user.country}</p>
 
     <h3>Cập nhật thông tin</h3>
-    <form action="Bai4JavaBeanServlet" method="post">
+    <form action="bai4_lab2" method="post">
         <label>Họ tên: <input type="text" name="fullname" value="${user.fullname}"></label><br>
         <label>Giới tính: <input type="checkbox" name="gender" ${user.gender ? 'checked' : ''}> Nam</label><br>
         <label>Quốc gia: <input type="text" name="country" value="${user.country}"></label><br>

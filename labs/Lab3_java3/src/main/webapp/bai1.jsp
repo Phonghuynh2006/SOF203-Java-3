@@ -7,10 +7,10 @@
 <title>Danh sách quốc gia</title>
 </head>
 <body>
-<a href="lab3bai1">Bài1</a>||
-<a href="lab3bai2">Bài2</a>||
-<a href="lab3bai3">Bài3</a>||
-<a href="lab3bai4">Bài4</a>||
+<a href="bai1_lab3">Bài1</a>||
+<a href="bai2_lab3">Bài2</a>||
+<a href="bai3_lab3">Bài3</a>||
+<a href="bai4_lab3">Bài4</a>||
 <hr/>
 <select name="country"> 
  <c:forEach var="ct" items="${countries}"> 

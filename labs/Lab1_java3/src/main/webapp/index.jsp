@@ -9,8 +9,11 @@
 <body>
 <img src="logo1.PNG"/>
 <hr/>
-<a href="bai1">Bài 1 </a> ||<a href="bai2">Bài 2 </a> || <a href="bai3">Bài 3 </a>|| 
-<a href="bai4">Bài 4 </a> || <a href="crud/them">them
+<a href="bai1_lab1">Bài 1 </a> ||
+<a href="bai2_lab1">Bài 2 </a> || 
+<a href="bai3_lab1">Bài 3 </a>|| 
+<a href="bai4_lab1">Bài 4 </a> || 
+<a href="crud/them">them
 <hr/>
 </body>
 </html>

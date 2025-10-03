@@ -13,7 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-@WebServlet ("/lab3bai3")
+@WebServlet ("/bai3_lab3")
 public class bai3controller extends HttpServlet {
 
 
@@ -25,7 +25,7 @@ public class bai3controller extends HttpServlet {
 		 map.put("price", 12345.678); 
 		 map.put("date", new Date()); 
 		 req.setAttribute("item", map); 
-		 req.getRequestDispatcher("lab3bai3.jsp").forward(req, resp);
+		 req.getRequestDispatcher("bai3.jsp").forward(req, resp);
 	 }
 	
 	

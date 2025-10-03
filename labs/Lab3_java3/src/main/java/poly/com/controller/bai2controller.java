@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import poly.com.country.Country;
-@WebServlet("/lab3bai2")
+@WebServlet("/bai2_lab3")
 public class bai2controller extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -21,7 +21,7 @@ public class bai2controller extends HttpServlet {
 				); 
 				req.setAttribute("countries", list);
 		
-		 req.getRequestDispatcher("lab3bai2.jsp").forward(req, resp);
+		 req.getRequestDispatcher("bai2.jsp").forward(req, resp);
 		 
 	     
 

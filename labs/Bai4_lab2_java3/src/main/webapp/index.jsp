@@ -8,9 +8,9 @@
 </head>
 <body>
     <h2>Lab2</h2>
-    <a href="bai1ShareServlet">Bài 1</a> ||
-    <a href="bai2UserServlet">Bài 2</a> ||
-    <a href="form/update">Bài 3</a> ||
-    <a href="Bai4JavaBeanServlet">Bài 4</a> ||
+    <a href="bai11_lab2">Bài 1</a> ||
+    <a href="bai22_lab2">Bài 2</a> ||
+    <a href="bai33_lab2">Bài 3</a> ||
+    <a href="bai4_lab2">Bài 4</a> ||
 </body>
 </html>
