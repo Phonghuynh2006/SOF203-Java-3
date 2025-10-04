@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <img src="logo1.PNG"/>
 <hr/>
 <a href="bai1_lab1">Bài 1 </a> ||
