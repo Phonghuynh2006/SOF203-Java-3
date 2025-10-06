@@ -34,7 +34,7 @@ Eclipse → File → Import → Existing Projects into Workspace.
 
 Chọn thư mục:
 
-bash
+
 
 SOF203-Java-3/labs
 Tick tất cả project → Finish.
