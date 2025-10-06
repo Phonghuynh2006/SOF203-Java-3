@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Menu</title>
-
 <style>
     nav {
         background-color: #34495e;
@@ -13,7 +12,6 @@
         justify-content: center;
         padding: 10px 0;
     }
-
     nav a {
         color: white;
         text-decoration: none;
@@ -21,14 +19,12 @@
         font-weight: bold;
         transition: 0.3s;
     }
-
     nav a:hover {
         color: #f1c40f;
     }
 </style>
 </head>
 <body>
-
 <nav>
     <a href="index.jsp">Trang chủ</a>
     <a href="news-list.jsp">Tin tức</a>

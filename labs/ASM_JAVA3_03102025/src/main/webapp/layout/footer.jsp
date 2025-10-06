@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Footer</title>
-
 <style>
     footer {
         background-color: #2c3e50;
@@ -14,22 +13,18 @@
         padding: 20px 0;
         margin-top: 30px;
     }
-
     footer p {
         margin: 5px 0;
     }
-
     .newsletter {
         margin-bottom: 10px;
     }
-
     .newsletter input[type="email"] {
         padding: 8px;
         width: 220px;
         border: none;
         border-radius: 3px;
     }
-
     .newsletter button {
         padding: 8px 12px;
         border: none;
@@ -39,14 +34,12 @@
         font-weight: bold;
         cursor: pointer;
     }
-
     .newsletter button:hover {
         background-color: #d4ac0d;
     }
 </style>
 </head>
 <body>
-
 <footer>
     <div class="newsletter">
         <form action="#" method="post">

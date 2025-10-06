@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABC News - Trang tin tức</title>
-    
-    <!-- CSS cơ bản -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,14 +12,12 @@
             padding: 0;
             background: #f4f4f4;
         }
-
         header {
             background-color: #2c3e50;
             color: white;
             padding: 15px 20px;
             text-align: center;
         }
-
         header h1 {
             margin: 0;
             font-size: 28px;
