@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Danh sách tin tức - ABC News</title>
-
 <style>
     .container {
         width: 80%;
@@ -60,30 +60,29 @@
 </head>
 <body>
 
+
 <!-- Include layout -->
 <jsp:include page="layout/header.jsp" />
 <jsp:include page="layout/menu.jsp" />
 
 <div class="container">
-    <h2>Danh sách tin tức - Thể thao</h2>
+    <h2>Danh sách tin tức</h2>
 
     <div class="news-list">
-        <div class="news-item">
-            <img src="https://placehold.co/300x150" alt="Tin thể thao 1">
-            <h3><a href="news-detail.jsp">Đội tuyển Việt Nam chuẩn bị cho vòng loại World Cup</a></h3>
-            <p>Ngày đăng: 02/10/2025</p>
-        </div>
-        <div class="news-item">
-            <img src="https://placehold.co/300x150" alt="Tin thể thao 2">
-            <h3><a href="news-detail.jsp">HAGL giành chiến thắng nghẹt thở trước CLB Hà Nội</a></h3>
-            <p>Ngày đăng: 01/10/2025</p>
-        </div>
-        <div class="news-item">
-            <img src="https://placehold.co/300x150" alt="Tin thể thao 3">
-            <h3><a href="news-detail.jsp">Cầu thủ trẻ gây ấn tượng tại giải U23 Đông Nam Á</a></h3>
-            <p>Ngày đăng: 28/09/2025</p>
-        </div>
+        <!-- 🔹 Duyệt danh sách tin thật từ servlet -->
+        <c:forEach var="n" items="${newsList}">
+            <div class="news-item">
+                <img src="${n.image}" alt="${n.title}">
+                <h3><a href="news-detail?id=${n.id}">${n.title}</a></h3>
+                <p>Ngày đăng: ${n.postedDate}</p>
+            </div>
+        </c:forEach>
     </div>
+
+    <!-- Hiện thông báo nếu không có tin -->
+    <c:if test="${empty newsList}">
+        <p>Hiện chưa có tin tức nào trong hệ thống.</p>
+    </c:if>
 </div>
 
 <jsp:include page="layout/footer.jsp" />

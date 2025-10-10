@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Chi tiết tin tức - ABC News</title>
+<title>${news.title} - ABC News</title>
 
 <style>
     .container {
@@ -70,28 +71,46 @@
 <jsp:include page="layout/menu.jsp" />
 
 <div class="container">
-    <h2>Thời tiết hôm nay nắng đẹp</h2>
-    <p><strong>Tác giả:</strong> Nguyễn Văn A | <strong>Ngày đăng:</strong> 04/10/2025 | <strong>Lượt xem:</strong> 120</p>
-    
-    <div class="news-content">
-        <img src="https://placehold.co/800x400" alt="Ảnh minh họa tin tức">
-        <p>Hôm nay, thời tiết trên cả nước nhìn chung khá thuận lợi. Các tỉnh miền Bắc trời nắng nhẹ, nhiệt độ dao động từ 26-31 độ C. 
-        Miền Trung tiếp tục có nắng nóng cục bộ, trong khi miền Nam duy trì hình thái thời tiết khô ráo, thích hợp cho các hoạt động ngoài trời.</p>
-        <p>Dự báo trong những ngày tới, nhiệt độ sẽ tăng nhẹ ở khu vực Bắc Bộ và giảm dần ở khu vực Trung Bộ. 
-        Người dân nên chú ý uống nhiều nước, bảo vệ da khi ra ngoài nắng để tránh say nóng.</p>
-    </div>
+    <!-- Nếu tìm thấy tin -->
+    <c:if test="${not empty news}">
+        <h2>${news.title}</h2>
+        <p>
+            <strong>Tác giả:</strong> ${news.author}
+            | <strong>Ngày đăng:</strong> ${news.postedDate}
+            | <strong>Lượt xem:</strong> ${news.viewCount}
+        </p>
 
-    <div class="related-news">
-        <h3>Tin cùng loại</h3>
-        <ul>
-            <li><a href="news-detail.jsp">Mưa lớn kéo dài ở miền Trung</a></li>
-            <li><a href="news-detail.jsp">Nhiệt độ miền Bắc giảm mạnh trong đêm</a></li>
-            <li><a href="news-detail.jsp">Thời tiết thuận lợi cho lễ hội trung thu</a></li>
-        </ul>
-    </div>
+        <div class="news-content">
+            <img src="${news.image}" alt="${news.title}">
+            <p>${news.content}</p>
+        </div>
+
+        <!-- Tin cùng loại -->
+        <div class="related-news">
+            <h3>Tin cùng loại</h3>
+            <ul>
+                <c:forEach var="item" items="${relatedList}">
+                    <li>
+                        <a href="news-detail?id=${item.id}">${item.title}</a>
+                    </li>
+                </c:forEach>
+            </ul>
+
+            <c:if test="${empty relatedList}">
+                <p>Chưa có tin cùng loại.</p>
+            </c:if>
+        </div>
+
+        <p style="margin-top: 20px;"><a href="news-list">&larr; Quay lại danh sách</a></p>
+    </c:if>
+
+    <!-- Nếu không có tin -->
+    <c:if test="${empty news}">
+        <h3>Không tìm thấy bài viết này!</h3>
+        <p><a href="news-list">&larr; Quay lại danh sách</a></p>
+    </c:if>
 </div>
 
 <jsp:include page="layout/footer.jsp" />
-
 </body>
 </html>
