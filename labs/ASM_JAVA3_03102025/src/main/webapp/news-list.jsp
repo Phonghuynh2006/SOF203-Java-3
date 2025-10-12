@@ -39,7 +39,7 @@
 
     .news-item img {
         width: 100%;
-        height: 150px;
+        height: 200px;
         object-fit: cover;
         border-radius: 5px;
     }
