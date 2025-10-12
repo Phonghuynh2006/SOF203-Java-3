@@ -59,4 +59,52 @@ public class UserDAO {
         }
         return null;
     }
+    
+    public void insert(User u) {
+        String sql = "INSERT INTO Users (Id, Password, Fullname, Birthday, Gender, Mobile, Email, Role) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        try (Connection con = DatabaseHelper.openConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, u.getId());
+            ps.setString(2, u.getPassword());
+            ps.setString(3, u.getFullname());
+            ps.setDate(4, u.getBirthday());
+            ps.setBoolean(5, u.isGender());
+            ps.setString(6, u.getMobile());
+            ps.setString(7, u.getEmail());
+            ps.setBoolean(8, u.isRole());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void update(User u) {
+        String sql = "UPDATE Users SET Password=?, Fullname=?, Birthday=?, Gender=?, Mobile=?, Email=?, Role=? WHERE Id=?";
+        try (Connection con = DatabaseHelper.openConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, u.getPassword());
+            ps.setString(2, u.getFullname());
+            ps.setDate(3, u.getBirthday());
+            ps.setBoolean(4, u.isGender());
+            ps.setString(5, u.getMobile());
+            ps.setString(6, u.getEmail());
+            ps.setBoolean(7, u.isRole());
+            ps.setString(8, u.getId());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(String id) {
+        String sql = "DELETE FROM Users WHERE Id=?";
+        try (Connection con = DatabaseHelper.openConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

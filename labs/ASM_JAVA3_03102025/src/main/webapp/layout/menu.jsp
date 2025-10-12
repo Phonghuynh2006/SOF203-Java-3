@@ -26,7 +26,7 @@
 </head>
 <body>
 <nav>
-    <a href="index.jsp">Trang chủ</a>
+    <a href="home">Trang chủ</a>
     <a href="news-list">Tin tức</a>
     <a href="login">Đăng nhập</a>
     <a href="#">Liên hệ</a>

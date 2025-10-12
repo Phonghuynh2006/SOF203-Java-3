@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +79,7 @@
     <h2>Quản lý loại tin</h2>
 
     <!-- Form nhập loại tin -->
-    <form action="#" method="post">
+    <form action="${pageContext.request.contextPath}/admin/category" method="post">
         <label>Mã loại tin:</label>
         <input type="text" name="id" placeholder="Nhập mã loại tin" required>
 
@@ -86,12 +87,17 @@
         <input type="text" name="name" placeholder="Nhập tên loại tin" required>
 
         <div style="margin-top: 10px;">
-            <button class="btn-add" type="submit">Thêm</button>
-            <button class="btn-update" type="button">Sửa</button>
-            <button class="btn-delete" type="button">Xóa</button>
+            <button class="btn-add" type="submit">Lưu</button>
             <button class="btn-clear" type="reset">Mới</button>
         </div>
     </form>
+
+    <!-- Thông báo -->
+    <c:if test="${not empty message}">
+        <div style="background: #d1f7d1; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+            ${message}
+        </div>
+    </c:if>
 
     <!-- Bảng danh sách loại tin -->
     <table>
@@ -99,21 +105,24 @@
             <tr>
                 <th>Mã loại</th>
                 <th>Tên loại tin</th>
+                <th>Thao tác</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>LT01</td>
-                <td>Thể thao</td>
-            </tr>
-            <tr>
-                <td>LT02</td>
-                <td>Kinh tế</td>
-            </tr>
-            <tr>
-                <td>LT03</td>
-                <td>Giải trí</td>
-            </tr>
+            <c:forEach var="c" items="${list}">
+                <tr>
+                    <td>${c.id}</td>
+                    <td>${c.name}</td>
+                    <td>
+                        <a href="category?action=delete&id=${c.id}" 
+                           onclick="return confirm('Xóa loại tin này?')">🗑️ Xóa</a>
+                    </td>
+                </tr>
+            </c:forEach>
+
+            <c:if test="${empty list}">
+                <tr><td colspan="3" style="text-align:center;">Chưa có loại tin nào.</td></tr>
+            </c:if>
         </tbody>
     </table>
 </div>

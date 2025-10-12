@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,41 +23,18 @@
         margin-bottom: 15px;
     }
 
-    form input[type="email"] {
-        width: 100%;
+    .alert {
+        background: #d1f7d1;
+        border-left: 5px solid #27ae60;
         padding: 10px;
-        margin: 8px 0;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-
-    form select {
-        width: 100%;
-        padding: 8px;
-        margin: 8px 0;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-
-    form button {
-        padding: 8px 15px;
-        border: none;
+        margin-bottom: 10px;
         border-radius: 5px;
-        cursor: pointer;
-        margin-right: 5px;
-        color: white;
-        font-weight: bold;
     }
-
-    .btn-add { background-color: #27ae60; }
-    .btn-update { background-color: #2980b9; }
-    .btn-delete { background-color: #c0392b; }
-    .btn-clear { background-color: #7f8c8d; }
 
     table {
         width: 100%;
         border-collapse: collapse;
-        margin-top: 20px;
+        margin-top: 15px;
     }
 
     th, td {
@@ -71,71 +48,61 @@
         color: white;
     }
 
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
+    tr:nth-child(even) { background-color: #f2f2f2; }
 
-    .status-true {
-        color: green;
-        font-weight: bold;
-    }
-
-    .status-false {
-        color: red;
-        font-weight: bold;
-    }
+    .status-true { color: green; font-weight: bold; }
+    .status-false { color: red; font-weight: bold; }
 </style>
 </head>
 <body>
 
-<!-- Include layout -->
 <jsp:include page="layout/header.jsp" />
 <jsp:include page="layout/menu.jsp" />
 
 <div class="container">
     <h2>Quản lý Newsletter</h2>
 
-    <!-- Form thêm email -->
-    <form action="#" method="post">
-        <label>Email nhận tin:</label>
-        <input type="email" name="email" placeholder="Nhập email" required>
+    <c:if test="${not empty message}">
+        <div class="alert">${message}</div>
+    </c:if>
 
-        <label>Trạng thái:</label>
-        <select name="enabled">
-            <option value="true">Còn hiệu lực</option>
-            <option value="false">Hết hiệu lực</option>
-        </select>
-
-        <div style="margin-top: 10px;">
-            <button class="btn-add" type="submit">Thêm</button>
-            <button class="btn-update" type="button">Sửa</button>
-            <button class="btn-delete" type="button">Xóa</button>
-            <button class="btn-clear" type="reset">Mới</button>
-        </div>
-    </form>
-
-    <!-- Bảng danh sách email -->
     <table>
         <thead>
             <tr>
                 <th>Email</th>
                 <th>Trạng thái</th>
+                <th>Hành động</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>example1@gmail.com</td>
-                <td class="status-true">Còn hiệu lực</td>
-            </tr>
-            <tr>
-                <td>example2@yahoo.com</td>
-                <td class="status-false">Hết hiệu lực</td>
-            </tr>
+            <c:forEach var="n" items="${list}">
+                <tr>
+                    <td>${n.email}</td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${n.enabled}">
+                                <span class="status-true">Còn hiệu lực</span>
+                            </c:when>
+                            <c:otherwise>
+                                <span class="status-false">Hết hiệu lực</span>
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
+                    <td>
+                        <a href="newsletter?action=toggle&email=${n.email}">🔁 Đổi trạng thái</a> |
+                        <a href="newsletter?action=delete&email=${n.email}" 
+                           onclick="return confirm('Xóa email này?')">🗑️ Xóa</a>
+                    </td>
+                </tr>
+            </c:forEach>
+
+            <c:if test="${empty list}">
+                <tr><td colspan="3" style="text-align:center;">Chưa có email đăng ký nào.</td></tr>
+            </c:if>
         </tbody>
     </table>
 </div>
 
 <jsp:include page="layout/footer.jsp" />
-
 </body>
 </html>

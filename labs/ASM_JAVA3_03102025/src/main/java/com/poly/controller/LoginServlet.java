@@ -32,9 +32,10 @@ public class LoginServlet extends HttpServlet {
 
             // Kiểm tra role
             if (user.isRole()) {
-                response.sendRedirect("admin_news.jsp"); // admin
+                //response.sendRedirect("admin/news"); // admin
+                response.sendRedirect("admin_dashboard.jsp"); // 👉 Trang chủ admin
             } else {
-                response.sendRedirect("news-list.jsp"); // phóng viên
+                response.sendRedirect("news-list"); // phóng viên
             }
         } else {
             request.setAttribute("message", "Sai tên đăng nhập hoặc mật khẩu!");

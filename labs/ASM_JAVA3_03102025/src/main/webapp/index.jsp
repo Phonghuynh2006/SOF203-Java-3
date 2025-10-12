@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,28 +61,23 @@
 </head>
 <body>
 
-<!-- Include layout -->
 <jsp:include page="layout/header.jsp" />
 <jsp:include page="layout/menu.jsp" />
 
 <div class="container">
     <h2>Tin nổi bật</h2>
     <div class="news-list">
-        <div class="news-item">
-            <img src="https://photo-baomoi.bmcdn.me/w250_r3x2/2025_10_05_293_53408438/6ffb39673d2ed4708d3f.jpg.avif" alt="Ảnh tin 1">
-            <h3><a href="news-detail.jsp">Premier League: Liverpool gục ngã trước Chelsea, Arsenal chiếm ngôi đầu</a></h3>
-            <p>Ngày đăng: 04/10/2025</p>
-        </div>
-        <div class="news-item">
-            <img src="https://photo-baomoi.bmcdn.me/w250_r3x2/2025_10_05_65_53407666/b7161b9c1fd5f68bafc4.jpg.avif" alt="Ảnh tin 2">
-            <h3><a href="news-detail.jsp">Thủ đoạn trốn thuế tinh vi của Hoàng Hường và những cảnh báo với doanh nghiệp</a></h3>
-            <p>Ngày đăng: 03/10/2025</p>
-        </div>
-        <div class="news-item">
-            <img src="https://photo-baomoi.bmcdn.me/w250_r3x2/2025_10_05_294_53407774/654c31c7358edcd0859f.jpg.avif" alt="Ảnh tin 3">
-            <h3><a href="news-detail.jsp">Hamas và Israel chuẩn bị khởi động đàm phán gián tiếp về vấn đề con tin</a></h3>
-            <p>Ngày đăng: 02/10/2025</p>
-        </div>
+        <c:forEach var="n" items="${list}">
+            <div class="news-item">
+                <img src="${n.image}" alt="${n.title}">
+                <h3><a href="news-detail.jsp?id=${n.id}">${n.title}</a></h3>
+                <p>Ngày đăng: ${n.postedDate}</p>
+            </div>
+        </c:forEach>
+
+        <c:if test="${empty list}">
+            <p>Hiện chưa có tin trang nhất nào được đăng.</p>
+        </c:if>
     </div>
 </div>
 
