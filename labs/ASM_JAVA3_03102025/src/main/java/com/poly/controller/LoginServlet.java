@@ -14,6 +14,20 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+
+        // Nếu đã đăng nhập rồi thì chuyển hướng luôn
+        if (session != null && session.getAttribute("user") != null) {
+            User u = (User) session.getAttribute("user");
+            if (u.isRole()) {
+                response.sendRedirect(request.getContextPath() + "/admin/dashboard");
+            } else {
+                response.sendRedirect(request.getContextPath() + "/admin/news");
+            }
+            return;
+        }
+
+        // Chưa đăng nhập -> hiển thị form login
         request.getRequestDispatcher("/login.jsp").forward(request, response);
     }
 
@@ -30,15 +44,13 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
 
-            // Kiểm tra role
             if (user.isRole()) {
-                //response.sendRedirect("admin/news"); // admin
-                response.sendRedirect("admin_dashboard.jsp"); // 👉 Trang chủ admin
+                response.sendRedirect(request.getContextPath() + "/admin/dashboard");
             } else {
-                response.sendRedirect("news-list"); // phóng viên
+                response.sendRedirect(request.getContextPath() + "/admin/news");
             }
         } else {
-            request.setAttribute("message", "Sai tên đăng nhập hoặc mật khẩu!");
+            request.setAttribute("message", "❌ Sai tên đăng nhập hoặc mật khẩu!");
             request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
     }

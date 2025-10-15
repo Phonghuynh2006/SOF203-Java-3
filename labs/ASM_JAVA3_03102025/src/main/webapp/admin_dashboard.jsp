@@ -1,5 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%
+    // ✅ Bảo mật: kiểm tra nếu chưa đăng nhập hoặc không phải admin thì chuyển hướng
+    com.poly.model.User user = (com.poly.model.User) session.getAttribute("user");
+    if (user == null) {
+        response.sendRedirect(request.getContextPath() + "/login");
+        return;
+    }
+    if (!user.isRole()) {
+        response.sendRedirect(request.getContextPath() + "/home");
+        return;
+    }
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +30,6 @@
         box-shadow: 0 0 8px rgba(0,0,0,0.2);
     }
     h1 {
-        color: #2c3e50;
         text-align: center;
         margin-bottom: 20px;
     }
@@ -45,7 +58,6 @@
         display: block;
     }
 </style>
-
 </head>
 <body>
 
@@ -53,7 +65,8 @@
 <jsp:include page="layout/menu.jsp" />
 
 <div class="container">
-    <h1>Trang Quản Trị Hệ Thống</h1>
+    <h1>Xin chào, <c:out value="${sessionScope.user.fullname}" /> 👋</h1>
+    <p style="text-align:center; color:#7f8c8d;">Chào mừng bạn đến với trang quản trị hệ thống ABC News.</p>
 
     <div class="menu-grid">
         <div class="card">
