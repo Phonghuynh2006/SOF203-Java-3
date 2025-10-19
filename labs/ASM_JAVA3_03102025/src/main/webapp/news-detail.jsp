@@ -111,6 +111,45 @@
     </c:if>
 </div>
 
+<button id="btnSave" class="btn-save">💾 Lưu đọc sau</button>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const saveBtn = document.getElementById("btnSave");
+
+    if (saveBtn) {
+        saveBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+
+            const articleId = new URLSearchParams(window.location.search).get("id");
+            const titleEl = document.querySelector(".container h2");
+            const title = titleEl ? titleEl.innerText.trim() : "Bài viết không có tiêu đề";
+            const url = window.location.href;
+
+            console.log("💾 Đang lưu:", { id: articleId, title, url }); // log để kiểm tra
+
+            let saved = JSON.parse(localStorage.getItem("savedNews") || "[]");
+
+            if (saved.some(item => item.id === articleId)) {
+                alert("⚠️ Bài viết này đã có trong danh sách!");
+                return;
+            }
+
+            if (title && url) {
+                saved.push({ id: articleId, title, url });
+                localStorage.setItem("savedNews", JSON.stringify(saved));
+                alert("✅ Đã lưu bài viết vào danh sách đọc sau!");
+            } else {
+                alert("❌ Không thể lưu bài viết này!");
+            }
+        });
+    }
+});
+</script>
+
+
+
+
+
 <jsp:include page="layout/footer.jsp" />
 </body>
 </html>

@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<fmt:setLocale value="${sessionScope.lang != null ? sessionScope.lang : 'vi'}"/>
+<fmt:setBundle basename="languages.global"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,15 +47,29 @@
 </head>
 <body>
 <footer>
-    <div class="newsletter">
-        <form action="#" method="post">
-            <label for="email">Đăng ký nhận bản tin:</label>
-            <input type="email" name="email" id="email" placeholder="Nhập email của bạn" required>
-            <button type="submit">Đăng ký</button>
-        </form>
-    </div>
-    <p>© 2025 ABC News. All rights reserved.</p>
+  <div class="newsletter">
+    <form action="${pageContext.request.contextPath}/newsletter" method="post">
+      <label for="email">Đăng ký nhận bản tin:</label>
+      <input type="email" name="email" id="email" placeholder="Nhập email của bạn" required>
+      <button type="submit">Đăng ký</button>
+    </form>
+  </div>
+  <p>© 2025 ABC News. All rights reserved.</p>
+
+  <!-- hiển thị thông báo (nếu có) -->
+  <c:if test="${not empty sessionScope.newsMessage}">
+    <div class="alert">${sessionScope.newsMessage}</div>
+    <%
+      session.removeAttribute("newsMessage");
+    %>
+  </c:if>
+<select onchange="location.href=this.value;">
+  <option value="?lang=vi" ${sessionScope.lang == 'vi' ? 'selected' : ''}>🇻🇳 Tiếng Việt</option>
+  <option value="?lang=en" ${sessionScope.lang == 'en' ? 'selected' : ''}>🇬🇧 English</option>
+</select>
+
 </footer>
+
 
 </body>
 </html>

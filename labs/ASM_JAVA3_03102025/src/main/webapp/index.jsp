@@ -70,7 +70,13 @@
         <c:forEach var="n" items="${list}">
             <div class="news-item">
                 <img src="${n.image}" alt="${n.title}">
-                <h3><a href="news-detail.jsp?id=${n.id}">${n.title}</a></h3>
+
+                <h3>
+  <a href="${pageContext.request.contextPath}/news-detail?id=${n.id}">
+      ${n.title}
+  </a>
+</h3>
+                
                 <p>Ngày đăng: ${n.postedDate}</p>
             </div>
         </c:forEach>

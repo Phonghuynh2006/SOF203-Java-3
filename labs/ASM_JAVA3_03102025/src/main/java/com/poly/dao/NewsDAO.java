@@ -34,6 +34,35 @@ public class NewsDAO {
         return list;
     }
     
+    
+    public List<News> findByAuthor(String author) {
+        List<News> list = new ArrayList<>();
+        String sql = "SELECT * FROM News WHERE Author = ? ORDER BY PostedDate DESC";
+        try (Connection con = DatabaseHelper.openConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, author);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    list.add(new News(
+                        rs.getString("Id"),
+                        rs.getString("Title"),
+                        rs.getString("Content"),
+                        rs.getString("Image"),
+                        rs.getDate("PostedDate"),
+                        rs.getString("Author"),
+                        rs.getString("CategoryId"),
+                        rs.getInt("ViewCount"),
+                        rs.getBoolean("Home")
+                    ));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    
     public void insert(News n) {
         String sql = "INSERT INTO News (Id, Title, Content, Image, PostedDate, Author, CategoryId, ViewCount, Home) "
                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";

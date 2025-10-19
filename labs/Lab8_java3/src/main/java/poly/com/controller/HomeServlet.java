@@ -1,28 +1,29 @@
 package poly.com.controller;
 
 import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet({"/home/index", "/home/about", "/home/contact"})
+@WebServlet("/home/*")
 public class HomeServlet extends HttpServlet {
-
-	@Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String uri = req.getRequestURI();
-        if (uri.contains("index")) {
-            req.setAttribute("view", "/index.jsp");
-        } else if (uri.contains("about")) {
-            req.setAttribute("view", "/about.jsp");
-        } else if (uri.contains("contact")) {
-            req.setAttribute("view", "/contact.jsp");
-        } else {
-            req.setAttribute("view", "/index.jsp"); // Trang mặc định
+        String path = req.getPathInfo();
+        String view = "/index.jsp";
+
+        if (path == null || path.equals("/index")) {
+            view = "/index.jsp";
+        } else if (path.equals("/about")) {
+            view = "/about.jsp";
+        } else if (path.equals("/contact")) {
+            view = "/contact.jsp";
         }
+
+        req.setAttribute("view", view);
         req.getRequestDispatcher("/layout.jsp").forward(req, resp);
     }
 }

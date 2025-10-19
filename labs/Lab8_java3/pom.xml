@@ -5,28 +5,50 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   
-  <dependencies>
-        <!-- Servlet API -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- JSP API -->
-        <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>2.3.3</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- JSTL (nếu cần) -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-        </dependency>
-    </dependencies>
+<dependencies>
+    <!-- SQL Server JDBC -->
+    <dependency>
+        <groupId>com.microsoft.sqlserver</groupId>
+        <artifactId>mssql-jdbc</artifactId>
+        <version>12.8.0.jre8</version>
+    </dependency>
+
+    <!-- BeanUtils -->
+    <dependency>
+        <groupId>commons-beanutils</groupId>
+        <artifactId>commons-beanutils</artifactId>
+        <version>1.9.3</version>
+    </dependency>
+
+    <!-- Servlet API (Tomcat 10+, namespace jakarta) -->
+    <dependency>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jakarta.servlet-api</artifactId>
+        <version>6.0.0</version>
+        <scope>provided</scope>
+    </dependency>
+
+    <!-- JSP API -->
+    <dependency>
+        <groupId>jakarta.servlet.jsp</groupId>
+        <artifactId>jakarta.servlet.jsp-api</artifactId>
+        <version>3.1.1</version>
+        <scope>provided</scope>
+    </dependency>
+
+    <!-- JSTL cho JSP (Jakarta) -->
+    <dependency>
+        <groupId>jakarta.servlet.jsp.jstl</groupId>
+        <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+        <version>3.0.1</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.glassfish.web</groupId>
+        <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+        <version>3.0.1</version>
+    </dependency>
+</dependencies>
     
   <build>
     <plugins>
