@@ -109,9 +109,10 @@
         <h3>Không tìm thấy bài viết này!</h3>
         <p><a href="news-list">&larr; Quay lại danh sách</a></p>
     </c:if>
+    
+    <button id="btnSave" class="btn-save">💾 Lưu đọc sau</button>
 </div>
 
-<button id="btnSave" class="btn-save">💾 Lưu đọc sau</button>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const saveBtn = document.getElementById("btnSave");

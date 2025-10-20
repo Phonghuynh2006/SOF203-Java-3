@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <fmt:setLocale value="${sessionScope.lang != null ? sessionScope.lang : 'vi'}"/>
 <fmt:setBundle basename="languages.global"/>
+
 
 <!DOCTYPE html>
 <html>
@@ -128,6 +129,15 @@
   color: black !important;     /* Toàn bộ modal hiện chữ rõ */
   z-index: 9999 !important;    /* Đặt modal nằm trên cùng */
 }
+#savedList img {
+    border: 1px solid #ccc;
+    background: #fff;
+}
+#savedList span {
+    font-size: 15px;
+    color: #2c3e50;
+}
+
  
     
 </style> 
@@ -142,7 +152,7 @@
         <a href="${pageContext.request.contextPath}/home"><fmt:message key="menu.home"/></a>
         <a href="${pageContext.request.contextPath}/news-list"><fmt:message key="menu.news"/></a>
         <a href="${pageContext.request.contextPath}/contact.jsp"><fmt:message key="menu.contact"/></a>
-<a href="#" id="btnSaved">📖 Đọc sau</a>
+<a href="#" id="btnSaved">📖 <fmt:message key="menu.saved" /></a>
      
     </div>
 
@@ -151,21 +161,21 @@
         <c:choose>
             <c:when test="${not empty sessionScope.user}">
                 <span class="user-info">
-                    Xin chào, <strong>${sessionScope.user.fullname}</strong>
+                    <fmt:message key="menu.hello" /> <strong>${sessionScope.user.fullname}</strong>
                 </span>
-                <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
+                <a href="${pageContext.request.contextPath}/logout"><fmt:message key="menu.logout" /></a>
 
                 <c:if test="${sessionScope.user.role}">
-                    <a href="${pageContext.request.contextPath}/admin/dashboard">🏠 Trang Quản Trị</a>
+                    <a href="${pageContext.request.contextPath}/admin/dashboard">🏠 <fmt:message key="menu.admin"/></a>
                 </c:if>
 
                 <c:if test="${not sessionScope.user.role}">
-                    <a href="${pageContext.request.contextPath}/admin/news">📰 Trang Tác Nghiệp</a>
+                    <a href="${pageContext.request.contextPath}/admin/news">📰 <fmt:message key="menu.author"/></a>
                 </c:if>
             </c:when>
 
             <c:otherwise>
-                <a href="${pageContext.request.contextPath}/login">Đăng nhập</a>
+                <a href="${pageContext.request.contextPath}/login"><fmt:message key="menu.login" /></a>
             </c:otherwise>
         </c:choose>
     </div>
@@ -201,7 +211,13 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             saved.forEach(item => {
                 const li = document.createElement("li");
-                li.innerHTML = `<a href="${item.url}" target="_blank">${item.title}</a>`;
+                li.innerHTML = `
+                    <a href="${item.url}" target="_blank" style="display:flex; align-items:center; gap:10px;">
+                        <img src="${item.image}" alt="${item.title}" style="width:60px;height:60px;object-fit:cover;border-radius:6px;">
+                        <span>${item.title}</span>
+                    </a>
+                `;
+
                 listContainer.appendChild(li);
             });
         }

@@ -4,7 +4,6 @@ import java.io.IOException;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 
 @WebFilter("/*")
 public class I18nFilter implements Filter {
@@ -14,14 +13,11 @@ public class I18nFilter implements Filter {
             throws IOException, ServletException {
 
         HttpServletRequest req = (HttpServletRequest) request;
-        HttpSession session = req.getSession();
-
         String lang = req.getParameter("lang");
 
+        // Nếu URL có ?lang=... thì lưu vào session
         if (lang != null) {
-            session.setAttribute("lang", lang);
-        } else if (session.getAttribute("lang") == null) {
-            session.setAttribute("lang", "vi"); // mặc định Tiếng Việt
+            req.getSession().setAttribute("lang", lang);
         }
 
         chain.doFilter(request, response);
